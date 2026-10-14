@@ -1,64 +1,20 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Email Confirmation | Win the Day</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: #f3f6ff;
-      color: #263238;
-      text-align: center;
-      padding: 24px;
-      box-sizing: border-box;
-    }
-    main {
-      max-width: 480px;
-      background: white;
-      padding: 36px 28px;
-      border-radius: 18px;
-      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
-    }
-    .check {
-      width: 68px;
-      height: 68px;
-      line-height: 68px;
-      margin: 0 auto 20px;
-      border-radius: 50%;
-      background: #e1f5e8;
-      color: #187744;
-      font-size: 38px;
-      font-weight: bold;
-    }
-    h1 { color: #3157a4; }
-    p { line-height: 1.7; }
-    a {
-      display: inline-block;
-      margin-top: 12px;
-      padding: 12px 20px;
-      background: #3157a4;
-      color: white;
-      text-decoration: none;
-      border-radius: 8px;
-      font-weight: bold;
-    }
-  </style>
-</head>
-<body>
-  <main>
-    <div class="check" aria-hidden="true">&#10003;</div>
-    <h1>Thanks for confirming!</h1>
-    <p>Your email confirmation link has brought you to Win the Day.</p>
-    <p>Return to the app to sign in and continue managing your family's daily chart, goals, and privileges.</p>
-    <a href="/">Return to Win the Day</a>
-    <p><small>If the app does not open, return to the browser or device where you use Win the Day.</small></p>
-  </main>
-</body>
-</html>
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="icon" href="favicon.png"><link rel="stylesheet" href="style.css"><title>Email confirmed — Win the Day</title><meta name="robots" content="noindex"></head><body><header><div class="top"><a href="./"><img src="logo.svg" alt=""></a><a href="./"><b>Win the Day</b><small>by Bright Wins Lab</small></a></div></header>
+<main><div class="card center"><div id="ok"><div class="big">✅</div><h1>Your email is confirmed</h1>
+<p>Go back to the Win the Day app and sign in with your email and password.</p>
+<p id="android" hidden><a class="btn" href="intent://open#Intent;scheme=wintheday;package=com.brightwinslab.wintheday;end">Open Win the Day</a></p>
+<p class="updated">Using Win the Day on the web? <a href="https://familychart.netlify.app/">Sign in here</a>.</p></div>
+<div id="bad" hidden><div class="big">⚠️</div><h1>This link didn’t work</h1><p id="why">The link may have expired or already been used.</p>
+<p>Open the Win the Day app and sign in. If it says your email isn’t confirmed, create the account again to get a new link, or email <a href="mailto:brightwinslab@gmail.com">brightwinslab@gmail.com</a>.</p></div>
+</div></main>
+<script>
+(function () {
+  var p = new URLSearchParams((location.hash || '').replace(/^#/, '') + '&' + location.search.replace(/^\?/, ''));
+  if (p.get('error') || p.get('error_code')) {
+    document.getElementById('ok').hidden = true; document.getElementById('bad').hidden = false;
+    if (p.get('error_code') !== 'otp_expired' && p.get('error_description')) document.getElementById('why').textContent = p.get('error_description').replace(/\+/g, ' ');
+  }
+  if (/Android/i.test(navigator.userAgent)) document.getElementById('android').hidden = false;
+  if (location.hash) history.replaceState(null, '', location.pathname); // don't leave sign-in tokens in the address bar
+})();
+</script>
+<footer><a href="privacy.html">Privacy Policy</a><a href="delete-data.html">Delete your account &amp; data</a><br>© 2026 Bright Wins Lab · <a href="mailto:brightwinslab@gmail.com">brightwinslab@gmail.com</a></footer></body></html>
