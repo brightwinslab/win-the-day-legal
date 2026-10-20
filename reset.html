@@ -1,0 +1,28 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="icon" href="favicon.png"><link rel="stylesheet" href="style.css"><title>Set a new password · Win the Day</title><meta name="robots" content="noindex"></head><body>
+<main><div class="card center"><div id="ok"><div class="big">🔐</div><h1>Set a new password</h1>
+<p id="appline" hidden>Tap below to open the Win the Day app and choose your new password there.</p>
+<p id="android" hidden><a class="btn" id="openApp" href="#">Open Win the Day</a></p>
+<p><a class="btn" id="openWeb" href="#">Set it on the website</a></p>
+<p class="updated">The link works once and expires after a while. If it doesn’t work, ask for a new one from “Forgot password?” in the app.</p></div>
+<div id="bad" hidden><div class="big">⚠️</div><h1>This link didn’t work</h1><p id="why">The link may have expired or already been used.</p>
+<p>Open the Win the Day app, tap <b>Forgot password?</b> and ask for a new link. Need help? Email <a href="mailto:support@brightwinslab.com">support@brightwinslab.com</a>.</p></div>
+</div></main>
+<script>
+(function () {
+  var hash = (location.hash || '').replace(/^#/, ''), p = new URLSearchParams(hash + '&' + location.search.replace(/^\?/, ''));
+  if (p.get('error') || p.get('error_code') || !p.get('access_token')) {
+    document.getElementById('ok').hidden = true; document.getElementById('bad').hidden = false;
+    if (p.get('error_code') !== 'otp_expired' && p.get('error_description')) document.getElementById('why').textContent = p.get('error_description').replace(/\+/g, ' ');
+    return;
+  }
+  var web = 'https://brightwinslab.com/win-the-day-legal/app/?reset=1#' + hash;
+  document.getElementById('openWeb').href = web;
+  if (/Android/i.test(navigator.userAgent)) {
+    var q = 'at=' + encodeURIComponent(p.get('access_token')) + '&rt=' + encodeURIComponent(p.get('refresh_token') || '') + '&type=recovery';
+    document.getElementById('openApp').href = 'intent://open/reset?' + q + '#Intent;scheme=wintheday;S.browser_fallback_url=' + encodeURIComponent(web) + ';end';
+    document.getElementById('android').hidden = false; document.getElementById('appline').hidden = false;
+  }
+  history.replaceState(null, '', location.pathname); // don't leave sign-in tokens in the address bar
+})();
+</script>
+<footer><a href="privacy.html">Privacy Policy</a><a href="delete-data.html">Delete your account &amp; data</a><br>© 2026 Bright Wins Lab · <a href="mailto:support@brightwinslab.com">support@brightwinslab.com</a></footer></body></html>
