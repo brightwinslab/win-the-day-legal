@@ -1,10 +1,10 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="icon" href="favicon.png"><link rel="stylesheet" href="style.css"><title>Email confirmed — Win the Day</title><meta name="robots" content="noindex"></head><body><header><div class="top"><a href="./"><img src="logo.svg" alt=""></a><a href="./"><b>Win the Day</b><small>by Bright Wins Lab</small></a></div></header>
-<main><div class="card center"><div id="ok"><div class="big">✅</div><h1>Your email is confirmed</h1>
-<p>Go back to the Win the Day app and sign in with your email and password.</p>
-<p id="android" hidden><a class="btn" href="intent://open#Intent;scheme=wintheday;S.browser_fallback_url=https%3A%2F%2Fbrightwinslab.com%2Fwin-the-day-legal%2Fapp%2F;end">Open Win the Day</a></p>
-<p class="updated">Using Win the Day on the web? <a href="https://brightwinslab.com/win-the-day-legal/app/">Sign in here</a>.</p></div>
-<div id="bad" hidden><div class="big">⚠️</div><h1>This link didn’t work</h1><p id="why">The link may have expired or already been used.</p>
-<p>Open the Win the Day app and sign in. If it says your email isn’t confirmed, create the account again to get a new link, or email <a href="mailto:support@brightwinslab.com">support@brightwinslab.com</a>.</p></div>
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="icon" href="favicon.png"><link rel="stylesheet" href="style.css"><title>Email confirmed — Win the Day</title><meta name="robots" content="noindex"><meta name="title-es" content="Correo confirmado — Win the Day"></head><body><header><div class="top"><a href="./"><img src="logo.svg" alt=""></a><a href="./"><b>Win the Day</b><small data-es="de Bright Wins Lab">by Bright Wins Lab</small></a></div></header>
+<main><div class="card center"><div id="ok"><div class="big">✅</div><h1 data-es="Tu correo está confirmado">Your email is confirmed</h1>
+<p data-es="Vuelve a la app Win the Day e inicia sesión con tu correo y contraseña.">Go back to the Win the Day app and sign in with your email and password.</p>
+<p id="android" hidden><a class="btn" href="intent://open#Intent;scheme=wintheday;S.browser_fallback_url=https%3A%2F%2Fbrightwinslab.com%2Fwin-the-day-legal%2Fapp%2F;end" data-es="Abrir Win the Day">Open Win the Day</a></p>
+<p class="updated" data-es="¿Usas Win the Day en la web? &lt;a href=&quot;https://brightwinslab.com/win-the-day-legal/app/&quot;&gt;Inicia sesión aquí&lt;/a&gt;.">Using Win the Day on the web? <a href="https://brightwinslab.com/win-the-day-legal/app/">Sign in here</a>.</p></div>
+<div id="bad" hidden><div class="big">⚠️</div><h1 data-es="Este enlace no funcionó">This link didn’t work</h1><p id="why" data-es="Puede que el enlace haya vencido o ya se haya usado.">The link may have expired or already been used.</p>
+<p data-es="Abre la app Win the Day e inicia sesión. Si dice que tu correo no está confirmado, crea la cuenta otra vez para recibir un enlace nuevo, o escribe a &lt;a href=&quot;mailto:support@brightwinslab.com&quot;&gt;support@brightwinslab.com&lt;/a&gt;.">Open the Win the Day app and sign in. If it says your email isn’t confirmed, create the account again to get a new link, or email <a href="mailto:support@brightwinslab.com">support@brightwinslab.com</a>.</p></div>
 </div></main>
 <script>
 (function () {
@@ -17,4 +17,10 @@
   if (location.hash) history.replaceState(null, '', location.pathname); // don't leave sign-in tokens in the address bar
 })();
 </script>
-<footer><a href="privacy.html">Privacy Policy</a><a href="delete-data.html">Delete your account &amp; data</a><br>© 2026 Bright Wins Lab · <a href="mailto:support@brightwinslab.com">support@brightwinslab.com</a></footer></body></html>
+<script>
+// Spanish when the phone or browser is in Spanish (2.7). Each [data-es] element holds its Spanish text.
+(function () { var l = (navigator.languages && navigator.languages[0]) || navigator.language || ''; if (!/^es/i.test(l)) return;
+  document.documentElement.lang = 'es'; document.querySelectorAll('[data-es]').forEach(function (e) { e.innerHTML = e.getAttribute('data-es'); });
+  var t = document.querySelector('meta[name=title-es]'); if (t) document.title = t.content; })();
+</script>
+<footer><a href="privacy.html" data-es="Política de privacidad">Privacy Policy</a><a href="delete-data.html" data-es="Eliminar tu cuenta y datos">Delete your account &amp; data</a><br>© 2026 Bright Wins Lab · <a href="mailto:support@brightwinslab.com">support@brightwinslab.com</a></footer></body></html>

@@ -1,11 +1,11 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="icon" href="favicon.png"><link rel="stylesheet" href="style.css"><title>Set a new password · Win the Day</title><meta name="robots" content="noindex"></head><body>
-<main><div class="card center"><div id="ok"><div class="big">🔐</div><h1>Set a new password</h1>
-<p id="appline" hidden>Tap below to open the Win the Day app and choose your new password there.</p>
-<p id="android" hidden><a class="btn" id="openApp" href="#">Open Win the Day</a></p>
-<p><a class="btn" id="openWeb" href="#">Set it on the website</a></p>
-<p class="updated">The link works once and expires after a while. If it doesn’t work, ask for a new one from “Forgot password?” in the app.</p></div>
-<div id="bad" hidden><div class="big">⚠️</div><h1>This link didn’t work</h1><p id="why">The link may have expired or already been used.</p>
-<p>Open the Win the Day app, tap <b>Forgot password?</b> and ask for a new link. Need help? Email <a href="mailto:support@brightwinslab.com">support@brightwinslab.com</a>.</p></div>
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="icon" href="favicon.png"><link rel="stylesheet" href="style.css"><title>Set a new password · Win the Day</title><meta name="robots" content="noindex"><meta name="title-es" content="Nueva contraseña · Win the Day"></head><body>
+<main><div class="card center"><div id="ok"><div class="big">🔐</div><h1 data-es="Elige una contraseña nueva">Set a new password</h1>
+<p id="appline" hidden data-es="Toca abajo para abrir la app Win the Day y elegir ahí tu contraseña nueva.">Tap below to open the Win the Day app and choose your new password there.</p>
+<p id="android" hidden><a class="btn" id="openApp" href="#" data-es="Abrir Win the Day">Open Win the Day</a></p>
+<p><a class="btn" id="openWeb" href="#" data-es="Elegirla en el sitio web">Set it on the website</a></p>
+<p class="updated" data-es="El enlace funciona una sola vez y vence después de un tiempo. Si no funciona, pide uno nuevo desde “¿Olvidaste tu contraseña?” en la app.">The link works once and expires after a while. If it doesn’t work, ask for a new one from “Forgot password?” in the app.</p></div>
+<div id="bad" hidden><div class="big">⚠️</div><h1 data-es="Este enlace no funcionó">This link didn’t work</h1><p id="why" data-es="Puede que el enlace haya vencido o ya se haya usado.">The link may have expired or already been used.</p>
+<p data-es="Abre la app Win the Day, toca &lt;b&gt;¿Olvidaste tu contraseña?&lt;/b&gt; y pide un enlace nuevo. ¿Necesitas ayuda? Escribe a &lt;a href=&quot;mailto:support@brightwinslab.com&quot;&gt;support@brightwinslab.com&lt;/a&gt;.">Open the Win the Day app, tap <b>Forgot password?</b> and ask for a new link. Need help? Email <a href="mailto:support@brightwinslab.com">support@brightwinslab.com</a>.</p></div>
 </div></main>
 <script>
 (function () {
@@ -25,4 +25,10 @@
   history.replaceState(null, '', location.pathname); // don't leave sign-in tokens in the address bar
 })();
 </script>
-<footer><a href="privacy.html">Privacy Policy</a><a href="delete-data.html">Delete your account &amp; data</a><br>© 2026 Bright Wins Lab · <a href="mailto:support@brightwinslab.com">support@brightwinslab.com</a></footer></body></html>
+<script>
+// Spanish when the phone or browser is in Spanish (2.7). Each [data-es] element holds its Spanish text.
+(function () { var l = (navigator.languages && navigator.languages[0]) || navigator.language || ''; if (!/^es/i.test(l)) return;
+  document.documentElement.lang = 'es'; document.querySelectorAll('[data-es]').forEach(function (e) { e.innerHTML = e.getAttribute('data-es'); });
+  var t = document.querySelector('meta[name=title-es]'); if (t) document.title = t.content; })();
+</script>
+<footer><a href="privacy.html" data-es="Política de privacidad">Privacy Policy</a><a href="delete-data.html" data-es="Eliminar tu cuenta y datos">Delete your account &amp; data</a><br>© 2026 Bright Wins Lab · <a href="mailto:support@brightwinslab.com">support@brightwinslab.com</a></footer></body></html>
