@@ -12,7 +12,9 @@
   var hash = (location.hash || '').replace(/^#/, ''), p = new URLSearchParams(hash + '&' + location.search.replace(/^\?/, ''));
   if (p.get('error') || p.get('error_code') || !p.get('access_token')) {
     document.getElementById('ok').hidden = true; document.getElementById('bad').hidden = false;
-    if (p.get('error_code') !== 'otp_expired' && p.get('error_description')) document.getElementById('why').textContent = p.get('error_description').replace(/\+/g, ' ');
+    // Never show text taken from the link itself (it could be used to put someone else's words on our page).
+    var code = p.get('error_code') || '';
+    if (code && code !== 'otp_expired') document.getElementById('why').textContent = 'The link is not valid. Please ask for a new one.';
     return;
   }
   var web = 'https://brightwinslab.com/win-the-day-legal/app/?reset=1#' + hash;
